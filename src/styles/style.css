@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+  background: #ebebeb;
+}
+
+.Layout {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  margin: 0 5%;
+  z-index: 1;
+}
+
+.Main {
+  grid-column-start: 1;
+  grid-column-end: 13;
+  display: grid;
+  grid-template-areas: "Header Header Header Header" "Sidebar Content Content Content" "Sidebar Content Content Content";
+}
+
+.Header {
+  grid-area: Header;
+  display: flex;
+  flex-direction: row;
+  background-color: aqua;
+}
+
+.Content {
+  grid-area: Content;
+  background-color: red;
+}
+
+.Sidebar {
+  grid-area: Sidebar;
+  background-color: #fafafa;
+}
+
+@media only screen and (max-width: 1024px) {
+  [class=Layout] {
+    grid-template-columns: repeat(8, 1fr);
+    margin: 0 3%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  [class=Layout] {
+    grid-template-columns: repeat(8, 1fr);
+    margin: 0 3%;
+  }
+}
+@media only screen and (max-width: 425px) {
+  [class=Layout] {
+    grid-template-columns: repeat(4, 1fr);
+    margin: 0;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
