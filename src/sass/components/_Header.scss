@@ -1,6 +1,21 @@
 .Header {
-  grid-area: Header;
+  //as child of Main
+  grid-column-start: 1;
+  grid-column-end: 13;
+
   display: flex;
   flex-direction: row;
   background-color: aqua;
+  padding: 1.5rem;
+  align-content: center;
+  align-items: center;
+
+  input {
+    width: 20%;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e6e6e6;
+    position: relative;
+    right: auto;
+  }
 }

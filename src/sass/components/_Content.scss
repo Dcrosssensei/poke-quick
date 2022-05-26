@@ -1,4 +1,17 @@
 .Content {
-  grid-area: Content;
-  background-color: red;
+  //as child of Main
+  grid-column-start: 2;
+  grid-column-end: 13;
+
+  &__Card {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.Card__Item {
+  background-color: #fafafa;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 0.5rem;
 }

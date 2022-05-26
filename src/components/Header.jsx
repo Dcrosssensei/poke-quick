@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <div className="Header">
       <img src="../" alt="logo" />
-      <input type="text" />
+      <input type="text" placeholder="Search" />
     </div>
   );
 };

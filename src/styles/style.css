@@ -1,7 +1,6 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Roboto", sans-serif;
   box-sizing: border-box;
   background: #ebebeb;
 }
@@ -17,24 +16,82 @@
   grid-column-start: 1;
   grid-column-end: 13;
   display: grid;
-  grid-template-areas: "Header Header Header Header" "Sidebar Content Content Content" "Sidebar Content Content Content";
+  grid-template-columns: 300px repeat(11, 1fr);
 }
 
 .Header {
-  grid-area: Header;
+  grid-column-start: 1;
+  grid-column-end: 13;
   display: flex;
   flex-direction: row;
   background-color: aqua;
+  padding: 1.5rem;
+  align-content: center;
+  align-items: center;
+}
+.Header input {
+  width: 20%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e6e6e6;
+  position: relative;
+  right: auto;
 }
 
 .Content {
-  grid-area: Content;
-  background-color: red;
+  grid-column-start: 2;
+  grid-column-end: 13;
+}
+.Content__Card {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Card__Item {
+  background-color: #fafafa;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 0.5rem;
 }
 
 .Sidebar {
-  grid-area: Sidebar;
+  grid-column-start: 1;
+  grid-column-end: 2;
   background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+}
+
+.Filter__Type {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.Filter__Type label {
+  padding: 0.2rem;
+  border-bottom: 1px solid #e6e6e6;
+}
+.Filter__Color {
+  display: flex;
+  flex-wrap: wrap;
+}
+.Filter__Color label {
+  padding: 5px;
+  background-color: var(--color);
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+.Filter__Gender {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.Filter__Gender label {
+  padding: 0.2rem;
+  border-bottom: 1px solid #e6e6e6;
 }
 
 @media only screen and (max-width: 1024px) {

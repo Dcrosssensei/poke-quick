@@ -5,8 +5,5 @@
 
   //as father
   display: grid;
-  grid-template-areas:
-    "Header Header Header Header"
-    "Sidebar Content Content Content"
-    "Sidebar Content Content Content";
+  grid-template-columns: 300px repeat(11, 1fr);
 }
