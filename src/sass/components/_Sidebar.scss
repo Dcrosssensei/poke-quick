@@ -8,39 +8,3 @@
   display: flex;
   flex-direction: column;
 }
-
-.Filter {
-  &__Type {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    label {
-      padding: 0.2rem;
-      border-bottom: 1px solid #e6e6e6;
-    }
-  }
-
-  &__Color {
-    display: flex;
-    flex-wrap: wrap;
-    label {
-      padding: 5px;
-      background-color: var(--color);
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-    }
-  }
-
-  &__Gender {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    label {
-      padding: 0.2rem;
-      border-bottom: 1px solid #e6e6e6;
-    }
-  }
-}
