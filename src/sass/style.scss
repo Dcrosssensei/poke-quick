@@ -2,9 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+body {
   background: #ebebeb;
 }
 
+@import "./pages/pages.scss";
 @import "./components/components.scss";
 
 //portatil-peq

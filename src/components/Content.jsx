@@ -6,8 +6,15 @@ import { selectPokemon } from "../redux/dataStore";
 import { useSelector } from "react-redux";
 
 const Content = () => {
+  const [imgLoaded, setImgLoaded] = React.useState(20);
   const pokeImg = useSelector(selectPokemon);
-  const pokemons = pokeImg.slice(0, 20);
+  const pokemons = pokeImg.slice(0, imgLoaded);
+
+  const handleLoad = () => {
+    if (imgLoaded < pokeImg.length) {
+      setImgLoaded(imgLoaded + 20);
+    }
+  };
 
   return (
     <div className="Content">
@@ -17,6 +24,7 @@ const Content = () => {
           <Card key={index} id={item.id} name={item.name} />
         ))}
       </section>
+      <button onClick={handleLoad}> Load More </button>
     </div>
   );
 };

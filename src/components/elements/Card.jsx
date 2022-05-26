@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import ModalP from "../../pages/Modal";
 
 const Card = ({ id, name }) => {
   let imgID = id;
@@ -8,14 +9,29 @@ const Card = ({ id, name }) => {
     imgID = "0" + imgID;
   }
 
+  const [showModal, setShowModal] = useState(false);
+
+  const handleClick = () => {
+    setShowModal(true);
+  };
+
+  const handleClose = () => {
+    setShowModal(false);
+  };
+
   return (
-    <div className="Card__Item">
-      <img
-        src={`https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${imgID}.png`}
-        alt={name}
-      />
-      <h3>{name}</h3>
-    </div>
+    <>
+      <div className="Card__Item" onClick={() => handleClick()}>
+        <img
+          src={`https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${imgID}.png`}
+          alt={name}
+        />
+        <h3>{name}</h3>
+      </div>
+      {showModal && (
+        <ModalP Close={handleClose} id={id} imgid={imgID} name={name}></ModalP>
+      )}
+    </>
   );
 };
 
