@@ -1,24 +1,20 @@
 import React, { useEffect, useState } from "react";
-import Card from "./elements/Card";
 
 //redux imports
 import { selectPokemon } from "../redux/dataStore";
 import { selectSearch } from "../redux/searchSlide";
-// import { selectType } from "../redux/filtersSlide";
 
 import { useSelector } from "react-redux";
+import ListContent from "./ListContent";
 
 const Content = () => {
   //redux
   const pokeImg = useSelector(selectPokemon);
   const searchData = useSelector(selectSearch);
-  // const selectTypes = useSelector(selectType);
 
   //States
   const [imgLoaded, setImgLoaded] = useState(20);
   const [sorted, setsorted] = useState([]);
-
-  // const pokemons = pokeImg.slice(0, imgLoaded);
   const search = sorted.slice(0, imgLoaded);
 
   const handleLoad = () => {
@@ -51,16 +47,7 @@ const Content = () => {
   return (
     <div className="Content">
       <p>Choose a pokemon to get more information</p>
-      {/* <section className="Content__Card">
-        {pokemons.map((item, index) => (
-          <Card key={index} id={item.id} name={item.name} />
-        ))}
-      </section> */}
-      <section className="Content__Card">
-        {search.map((item, index) => (
-          <Card key={index} id={item.id} name={item.name} />
-        ))}
-      </section>
+      <ListContent list={search} load={imgLoaded} />
       <button onClick={handleLoad}> Load More </button>
     </div>
   );

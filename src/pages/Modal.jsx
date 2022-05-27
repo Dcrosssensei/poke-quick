@@ -46,9 +46,9 @@ const Modal = ({ pokemonName, onClose, id, imgid }) => {
     detSpeciePokemon(id).then((resp) => {
       const datos = resp;
       setSpecies({
-        color: datos.color.name,
-        gender: datos.gender_rate,
-        habitat: datos.habitat.name,
+        color: datos?.color?.name,
+        gender: datos?.gender_rate,
+        habitat: datos?.habitat?.name,
       });
     });
 
@@ -117,11 +117,11 @@ const Modal = ({ pokemonName, onClose, id, imgid }) => {
                 </tr>
                 <tr>
                   <td> Habitat </td>
-                  <td> {species.habitat} </td>
+                  <td> {species.habitat ?? "undefined"} </td>
                 </tr>
                 <tr>
                   <td> Color </td>
-                  <td> {species.color} </td>
+                  <td> {species.color ?? "undefined"} </td>
                 </tr>
               </tbody>
             </table>

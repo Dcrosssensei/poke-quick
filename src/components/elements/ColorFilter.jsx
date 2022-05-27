@@ -2,19 +2,11 @@ import React, { useEffect, useState } from "react";
 
 import { selectColor } from "../../redux/filtersSlide";
 
+import servicesCase from "../../services/servicesCase";
+import serviceColor from "../../services/serviceColor";
+import { colorList } from "../../services/serviceActiveFilter";
+
 import { useSelector, useDispatch } from "react-redux";
-import {
-  black,
-  blue,
-  brown,
-  gray,
-  green,
-  pink,
-  purple,
-  red,
-  white,
-  yellow,
-} from "../../redux/colorSlide";
 
 const ColorFilter = () => {
   const dispatch = useDispatch();
@@ -27,45 +19,126 @@ const ColorFilter = () => {
   useEffect(() => {
     let activeBoolean = typeActive.active;
     let activeIndex = typeActive.name;
+    let url = "";
 
     if (activeBoolean === true || activeBoolean === false) {
       switch (activeIndex) {
         case "black":
-          dispatch(black(activeBoolean));
+          url = color[0].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            colorList,
+            serviceColor
+          );
           break;
         case "blue":
-          dispatch(blue(activeBoolean));
+          url = color[1].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            colorList,
+            serviceColor
+          );
           break;
         case "brown":
-          dispatch(brown(activeBoolean));
+          url = color[2].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            colorList,
+            serviceColor
+          );
           break;
         case "gray":
-          dispatch(gray(activeBoolean));
+          url = color[3].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            colorList,
+            serviceColor
+          );
           break;
         case "green":
-          dispatch(green(activeBoolean));
+          url = color[4].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            colorList,
+            serviceColor
+          );
           break;
         case "pink":
-          dispatch(pink(activeBoolean));
+          url = color[5].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            colorList,
+            serviceColor
+          );
           break;
         case "purple":
-          dispatch(purple(activeBoolean));
+          url = color[6].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            colorList,
+            serviceColor
+          );
           break;
         case "red":
-          dispatch(red(activeBoolean));
+          url = color[7].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            colorList,
+            serviceColor
+          );
           break;
         case "white":
-          dispatch(white(activeBoolean));
+          url = color[8].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            colorList,
+            serviceColor
+          );
           break;
         case "yellow":
-          dispatch(yellow(activeBoolean));
+          url = color[9].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            colorList,
+            serviceColor
+          );
           break;
 
         default:
           break;
       }
     }
-  }, [typeActive, dispatch]);
+  }, [typeActive, dispatch, color]);
 
   return (
     <div className="Filter__Color">

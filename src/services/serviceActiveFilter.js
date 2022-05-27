@@ -1,17 +1,15 @@
-const detPokemon = (id) => {
-  return fetch(`https://pokeapi.co/api/v2/type/${id}`).then((res) =>
-    res.json()
+const typeList = (url) => {
+  return fetch(`${url}`).then((res) => res.json().then((data) => data.pokemon));
+};
+const genderList = (url) => {
+  return fetch(`${url}`).then((res) =>
+    res.json().then((data) => data.pokemon_species_details)
   );
 };
-const detSpeciePokemon = (id) => {
-  return fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`).then((res) =>
-    res.json()
-  );
-};
-const detDescription = (id) => {
-  return fetch(`https://pokeapi.co/api/v2/characteristic/${id}`).then((res) =>
-    res.json()
+const colorList = (url) => {
+  return fetch(`${url}`).then((res) =>
+    res.json().then((data) => data.pokemon_species)
   );
 };
 
-export { detPokemon, detSpeciePokemon, detDescription };
+export { typeList, genderList, colorList };

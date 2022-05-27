@@ -3,16 +3,16 @@ import { createSlice } from "@reduxjs/toolkit";
 export const colorSlide = createSlice({
   name: "gemderFilter",
   initialState: {
-    black: false,
-    blue: false,
-    brown: false,
-    gray: false,
-    green: false,
-    pink: false,
-    purple: false,
-    red: false,
-    white: false,
-    yellow: false,
+    black: [],
+    blue: [],
+    brown: [],
+    gray: [],
+    green: [],
+    pink: [],
+    purple: [],
+    red: [],
+    white: [],
+    yellow: [],
   },
   reducers: {
     black: (state, action) => {

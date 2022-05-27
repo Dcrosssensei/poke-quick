@@ -3,11 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 export const genderSlide = createSlice({
   name: "gemderFilter",
   initialState: {
-    all: false,
-    female: false,
-    male: false,
-    genderless: false,
-    undefineds: false,
+    all: [],
+    female: [],
+    male: [],
+    genderless: [],
+    undefineds: [],
   },
   reducers: {
     all: (state, action) => {

@@ -2,28 +2,10 @@ import React, { useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectType } from "../../redux/filtersSlide";
-import {
-  normal,
-  fighting,
-  flying,
-  poison,
-  ground,
-  rock,
-  bug,
-  ghost,
-  steel,
-  fire,
-  water,
-  grass,
-  electric,
-  psychic,
-  ice,
-  dragon,
-  dark,
-  fairy,
-  unknown,
-  shadow,
-} from "../../redux/typeSlide";
+
+import servicesCase from "../../services/servicesCase";
+import serviceList from "../../services/serviceList";
+import { typeList } from "../../services/serviceActiveFilter";
 
 const TypeFilter = () => {
   const dispatch = useDispatch();
@@ -33,78 +15,239 @@ const TypeFilter = () => {
   const handleOnChange = (e) => {
     setTypeActive({ name: e.id, active: e.checked });
   };
+
   useEffect(() => {
     let activeBoolean = typeActive.active;
     let activeIndex = typeActive.name;
-
+    let url = "";
     if (activeBoolean === true || activeBoolean === false) {
       switch (activeIndex) {
         case "normal":
-          dispatch(normal(activeBoolean));
+          url = type[0].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            typeList,
+            serviceList
+          );
           break;
         case "fighting":
-          dispatch(fighting(activeBoolean));
+          url = type[1].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            typeList,
+            serviceList
+          );
           break;
         case "flying":
-          dispatch(flying(activeBoolean));
+          url = type[2].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            typeList,
+            serviceList
+          );
           break;
         case "poison":
-          dispatch(poison(activeBoolean));
+          url = type[3].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            typeList,
+            serviceList
+          );
           break;
         case "ground":
-          dispatch(ground(activeBoolean));
+          url = type[4].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            typeList,
+            serviceList
+          );
           break;
         case "rock":
-          dispatch(rock(activeBoolean));
+          url = type[5].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            typeList,
+            serviceList
+          );
           break;
         case "bug":
-          dispatch(bug(activeBoolean));
+          url = type[6].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            typeList,
+            serviceList
+          );
           break;
         case "ghost":
-          dispatch(ghost(activeBoolean));
+          url = type[7].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            typeList,
+            serviceList
+          );
           break;
         case "steel":
-          dispatch(steel(activeBoolean));
+          url = type[8].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            typeList,
+            serviceList
+          );
           break;
         case "fire":
-          dispatch(fire(activeBoolean));
+          url = type[9].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            typeList,
+            serviceList
+          );
           break;
         case "water":
-          dispatch(water(activeBoolean));
+          url = type[10].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            typeList,
+            serviceList
+          );
           break;
         case "grass":
-          dispatch(grass(activeBoolean));
+          url = type[11].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            typeList,
+            serviceList
+          );
           break;
         case "electric":
-          dispatch(electric(activeBoolean));
+          url = type[12].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            typeList,
+            serviceList
+          );
           break;
         case "psychic":
-          dispatch(psychic(activeBoolean));
+          url = type[13].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            typeList,
+            serviceList
+          );
           break;
         case "ice":
-          dispatch(ice(activeBoolean));
+          url = type[14].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            typeList,
+            serviceList
+          );
           break;
         case "dragon":
-          dispatch(dragon(activeBoolean));
+          url = type[15].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            typeList,
+            serviceList
+          );
           break;
         case "dark":
-          dispatch(dark(activeBoolean));
+          url = type[16].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            typeList,
+            serviceList
+          );
           break;
         case "fairy":
-          dispatch(fairy(activeBoolean));
+          url = type[17].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            typeList,
+            serviceList
+          );
           break;
         case "unknown":
-          dispatch(unknown(activeBoolean));
+          url = type[18].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            typeList,
+            serviceList
+          );
           break;
         case "shadow":
-          dispatch(shadow(activeBoolean));
+          url = type[19].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            typeList,
+            serviceList
+          );
           break;
 
         default:
           break;
       }
     }
-  }, [typeActive, dispatch]);
+  }, [typeActive, dispatch, type]);
 
   return (
     <div className="Filter__Gender">

@@ -1,28 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const typeSlide = createSlice({
-  name: "gemderFilter",
+  name: "typeFilter",
   initialState: {
-    normal: false,
-    fighting: false,
-    flying: false,
-    poison: false,
-    ground: false,
-    rock: false,
-    bug: false,
-    ghost: false,
-    steel: false,
-    fire: false,
-    water: false,
-    grass: false,
-    electric: false,
-    psychic: false,
-    ice: false,
-    dragon: false,
-    dark: false,
-    fairy: false,
-    unknown: false,
-    shadow: false,
+    normal: [],
+    fighting: [],
+    flying: [],
+    poison: [],
+    ground: [],
+    rock: [],
+    bug: [],
+    ghost: [],
+    steel: [],
+    fire: [],
+    water: [],
+    grass: [],
+    electric: [],
+    psychic: [],
+    ice: [],
+    dragon: [],
+    dark: [],
+    fairy: [],
+    unknown: [],
+    shadow: [],
   },
   reducers: {
     normal: (state, action) => {
@@ -113,5 +113,24 @@ export const {
 } = typeSlide.actions;
 
 export const selectNormal = (state) => state.typeFilter.normal;
+export const selectfighting = (state) => state.typeFilter.fighting;
+export const selectflying = (state) => state.typeFilter.flying;
+export const selectpoison = (state) => state.typeFilter.poison;
+export const selectground = (state) => state.typeFilter.ground;
+export const selectrock = (state) => state.typeFilter.rock;
+export const selectbug = (state) => state.typeFilter.bug;
+export const selectghost = (state) => state.typeFilter.ghost;
+export const selectsteel = (state) => state.typeFilter.steel;
+export const selectfire = (state) => state.typeFilter.fire;
+export const selectwater = (state) => state.typeFilter.water;
+export const selectgrass = (state) => state.typeFilter.grass;
+export const selectelectric = (state) => state.typeFilter.electric;
+export const selectpsychic = (state) => state.typeFilter.psychic;
+export const selectice = (state) => state.typeFilter.ice;
+export const selectdragon = (state) => state.typeFilter.dragon;
+export const selectdark = (state) => state.typeFilter.dark;
+export const selectfairy = (state) => state.typeFilter.fairy;
+export const selectunknown = (state) => state.typeFilter.unknown;
+export const selectshadow = (state) => state.typeFilter.shadow;
 
 export default typeSlide.reducer;

@@ -3,13 +3,9 @@ import React, { useEffect, useState } from "react";
 import { selectgender } from "../../redux/filtersSlide";
 import { useSelector, useDispatch } from "react-redux";
 
-import {
-  all,
-  female,
-  male,
-  genderless,
-  undefineds,
-} from "../../redux/genderSlide";
+import servicesCase from "../../services/servicesCase";
+import { genderList } from "../../services/serviceActiveFilter";
+import serviceGender from "../../services/serviceGender";
 
 const GenderFilter = () => {
   const gender = useSelector(selectgender);
@@ -22,38 +18,54 @@ const GenderFilter = () => {
   useEffect(() => {
     let activeBoolean = typeActive.active;
     let activeIndex = typeActive.name;
+    let url = "";
 
     if (activeBoolean === true || activeBoolean === false) {
       switch (activeIndex) {
-        case "all":
-          dispatch(all(activeBoolean));
-          break;
         case "female":
-          dispatch(female(activeBoolean));
+          url = gender[0].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            genderList,
+            serviceGender
+          );
           break;
         case "male":
-          dispatch(male(activeBoolean));
+          url = gender[1].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            genderList,
+            serviceGender
+          );
           break;
         case "genderless":
-          dispatch(genderless(activeBoolean));
-          break;
-        case "undefineds":
-          dispatch(undefineds(activeBoolean));
+          url = gender[2].url;
+          servicesCase(
+            activeBoolean,
+            url,
+            dispatch,
+            activeIndex,
+            genderList,
+            serviceGender
+          );
           break;
 
         default:
           break;
       }
     }
-  }, [typeActive, dispatch]);
+  }, [typeActive, dispatch, gender]);
 
   return (
     <div className="Filter__Gender">
       <h5>Gender:</h5>
-      <label>
-        <input type="checkbox" name="ALL" id="0" />
-        all
-      </label>
+
       {gender.map((item, index) => (
         <label
           key={index}
@@ -66,10 +78,6 @@ const GenderFilter = () => {
           {item.name}
         </label>
       ))}
-      <label>
-        <input type="checkbox" name="undefined" id="0" />
-        undefined
-      </label>
     </div>
   );
 };
