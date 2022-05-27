@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectType } from "../../redux/filtersSlide";
+import { TYPES } from "../../redux/activeSlide";
 
 import servicesCase from "../../services/servicesCase";
 import serviceList from "../../services/serviceList";
@@ -11,260 +12,92 @@ const TypeFilter = () => {
   const dispatch = useDispatch();
   const type = useSelector(selectType);
 
-  const [typeActive, setTypeActive] = useState({ name: "", active: "" });
   const handleOnChange = (e) => {
-    setTypeActive({ name: e.id, active: e.checked });
+    dispatch(TYPES(e.id));
   };
 
   useEffect(() => {
-    let activeBoolean = typeActive.active;
-    let activeIndex = typeActive.name;
-    let url = "";
-    if (activeBoolean === true || activeBoolean === false) {
-      switch (activeIndex) {
-        case "normal":
-          url = type[0].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            typeList,
-            serviceList
-          );
-          break;
-        case "fighting":
-          url = type[1].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            typeList,
-            serviceList
-          );
-          break;
-        case "flying":
-          url = type[2].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            typeList,
-            serviceList
-          );
-          break;
-        case "poison":
-          url = type[3].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            typeList,
-            serviceList
-          );
-          break;
-        case "ground":
-          url = type[4].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            typeList,
-            serviceList
-          );
-          break;
-        case "rock":
-          url = type[5].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            typeList,
-            serviceList
-          );
-          break;
-        case "bug":
-          url = type[6].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            typeList,
-            serviceList
-          );
-          break;
-        case "ghost":
-          url = type[7].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            typeList,
-            serviceList
-          );
-          break;
-        case "steel":
-          url = type[8].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            typeList,
-            serviceList
-          );
-          break;
-        case "fire":
-          url = type[9].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            typeList,
-            serviceList
-          );
-          break;
-        case "water":
-          url = type[10].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            typeList,
-            serviceList
-          );
-          break;
-        case "grass":
-          url = type[11].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            typeList,
-            serviceList
-          );
-          break;
-        case "electric":
-          url = type[12].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            typeList,
-            serviceList
-          );
-          break;
-        case "psychic":
-          url = type[13].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            typeList,
-            serviceList
-          );
-          break;
-        case "ice":
-          url = type[14].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            typeList,
-            serviceList
-          );
-          break;
-        case "dragon":
-          url = type[15].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            typeList,
-            serviceList
-          );
-          break;
-        case "dark":
-          url = type[16].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            typeList,
-            serviceList
-          );
-          break;
-        case "fairy":
-          url = type[17].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            typeList,
-            serviceList
-          );
-          break;
-        case "unknown":
-          url = type[18].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            typeList,
-            serviceList
-          );
-          break;
-        case "shadow":
-          url = type[19].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            typeList,
-            serviceList
-          );
-          break;
+    setTimeout(() => {
+      let url = "";
+      url = "https://pokeapi.co/api/v2/type/1/";
+      servicesCase(url, dispatch, "normal", typeList, serviceList);
 
-        default:
-          break;
-      }
-    }
-  }, [typeActive, dispatch, type]);
+      url = "https://pokeapi.co/api/v2/type/2/";
+      servicesCase(url, dispatch, "fighting", typeList, serviceList);
+
+      url = "https://pokeapi.co/api/v2/type/3/";
+      servicesCase(url, dispatch, "flying", typeList, serviceList);
+
+      url = "https://pokeapi.co/api/v2/type/4/";
+      servicesCase(url, dispatch, "poison", typeList, serviceList);
+
+      url = "https://pokeapi.co/api/v2/type/5/";
+      servicesCase(url, dispatch, "ground", typeList, serviceList);
+
+      url = "https://pokeapi.co/api/v2/type/6/";
+      servicesCase(url, dispatch, "rock", typeList, serviceList);
+
+      url = "https://pokeapi.co/api/v2/type/7/";
+      servicesCase(url, dispatch, "bug", typeList, serviceList);
+
+      url = "https://pokeapi.co/api/v2/type/8/";
+      servicesCase(url, dispatch, "ghost", typeList, serviceList);
+
+      url = "https://pokeapi.co/api/v2/type/9/";
+      servicesCase(url, dispatch, "steel", typeList, serviceList);
+
+      url = "https://pokeapi.co/api/v2/type/10/";
+      servicesCase(url, dispatch, "fire", typeList, serviceList);
+
+      url = "https://pokeapi.co/api/v2/type/11/";
+      servicesCase(url, dispatch, "water", typeList, serviceList);
+
+      url = "https://pokeapi.co/api/v2/type/12/";
+      servicesCase(url, dispatch, "grass", typeList, serviceList);
+
+      url = "https://pokeapi.co/api/v2/type/13/";
+      servicesCase(url, dispatch, "electric", typeList, serviceList);
+
+      url = "https://pokeapi.co/api/v2/type/14/";
+      servicesCase(url, dispatch, "psychic", typeList, serviceList);
+
+      url = "https://pokeapi.co/api/v2/type/15/";
+      servicesCase(url, dispatch, "ice", typeList, serviceList);
+
+      url = "https://pokeapi.co/api/v2/type/16/";
+      servicesCase(url, dispatch, "dragon", typeList, serviceList);
+
+      url = "https://pokeapi.co/api/v2/type/17/";
+      servicesCase(url, dispatch, "dark", typeList, serviceList);
+
+      url = "https://pokeapi.co/api/v2/type/18/";
+      servicesCase(url, dispatch, "fairy", typeList, serviceList);
+
+      url = "https://pokeapi.co/api/v2/type/10001/";
+      servicesCase(url, dispatch, "unknown", typeList, serviceList);
+
+      url = "https://pokeapi.co/api/v2/type/10002/";
+      servicesCase(url, dispatch, "shadow", typeList, serviceList);
+    }, 1500);
+  }, [dispatch, type]);
 
   return (
-    <div className="Filter__Gender">
+    <div className="Filter__Type">
       <h5>Type:</h5>
-
-      {type.map((item, index) => (
-        <label
-          key={index}
-          htmlFor={item.name}
-          onChange={(e) => {
-            handleOnChange(e.target);
-          }}
-        >
-          <input type="checkbox" name={item.name} id={item.name} />
-          {item.name}
-        </label>
-      ))}
+      <div className="Filter__Type__List">
+        {type.map((item, index) => (
+          <label
+            key={index}
+            htmlFor={item.name}
+            onChange={(e) => {
+              handleOnChange(e.target);
+            }}
+          >
+            <input type="checkbox" name={item.name} id={item.name} />
+            {item.name}
+          </label>
+        ))}
+      </div>
     </div>
   );
 };

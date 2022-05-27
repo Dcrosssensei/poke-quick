@@ -85,17 +85,20 @@ const Modal = ({ pokemonName, onClose, id, imgid }) => {
       <div className="Modal__Container">
         <button onClick={onClose} />
         <div className="Modal__Info">
-          <img
-            src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${imgid}.png`}
-            alt=""
-          />
+          <div className="Info__Frame">
+            <img
+              className="big__img"
+              src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${imgid}.png`}
+              alt=""
+            />
+          </div>
           <div className="Info__Item">
             <div className="Info__Title">
               <h1> {pokemonName} </h1>
               <h2> {imgid}</h2>
             </div>
             <p> {description} </p>
-            <table>
+            <table className="Info__Table">
               <tbody>
                 <tr>
                   <td> Height </td>
@@ -133,21 +136,23 @@ const Modal = ({ pokemonName, onClose, id, imgid }) => {
             </div>
           </div>
         </div>
-        <hr />
-        <div className="Modal__Evolution">
-          <h2>Evolution</h2>
 
-          <div className="Evolution__Item">
-            {evolutions.map((item, index) => (
-              <div className="Item__Container" key={index}>
-                <img
-                  src={`https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${item.id}.png`}
-                  alt="title"
-                  title={item.name}
-                />
-                <h3>{item.name}</h3>
-              </div>
-            ))}
+        <div className="Modal__Evolution">
+          <h1>Evolution</h1>
+          <hr />
+          <div className="Evolution__List">
+            <div className="Evolution__Item">
+              {evolutions.map((item, index) => (
+                <div className="Item__Container" key={index}>
+                  <img
+                    src={`https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${item.id}.png`}
+                    alt="title"
+                    title={item.name}
+                  />
+                  <h3>{item.name}</h3>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

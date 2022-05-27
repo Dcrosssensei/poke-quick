@@ -11,7 +11,7 @@ const serviceGender = (url, dispatch, target, servicio) => {
       pack2.id = urlFix;
       pack.push(pack2);
     });
-    console.log(pack);
+
     dispatch(target(pack));
   });
 };

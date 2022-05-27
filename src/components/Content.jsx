@@ -17,6 +17,7 @@ const Content = () => {
   const [sorted, setsorted] = useState([]);
   const search = sorted.slice(0, imgLoaded);
 
+  //cargar imagenes
   const handleLoad = () => {
     if (imgLoaded < pokeImg.length) {
       setImgLoaded(imgLoaded + 20);
@@ -25,6 +26,7 @@ const Content = () => {
 
   useEffect(() => {
     let sortedCopy = [...pokeImg];
+
     setsorted(sortedCopy);
     const regExpL = new RegExp(/\w/g);
     const regExpN = new RegExp(/[0-9]/g);
@@ -37,8 +39,8 @@ const Content = () => {
     }
     if (regExpN.test(searchData)) {
       let sortedFix = sortedCopy.filter((e) => {
-        let num = parseInt(searchData);
-        return e.id === num;
+        let num = e.id + "";
+        return num.includes(searchData);
       });
       setsorted(sortedFix);
     }

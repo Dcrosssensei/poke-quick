@@ -63,5 +63,14 @@ export const {
 } = colorSlide.actions;
 
 export const selectBlack = (state) => state.colorFilter.black;
+export const selectblue = (state) => state.colorFilter.blue;
+export const selectbrown = (state) => state.colorFilter.brown;
+export const selectgray = (state) => state.colorFilter.gray;
+export const selectgreen = (state) => state.colorFilter.green;
+export const selectpink = (state) => state.colorFilter.pink;
+export const selectpurple = (state) => state.colorFilter.purple;
+export const selectred = (state) => state.colorFilter.red;
+export const selectwhite = (state) => state.colorFilter.white;
+export const selectyellow = (state) => state.colorFilter.yellow;
 
 export default colorSlide.reducer;

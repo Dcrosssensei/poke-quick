@@ -32,6 +32,8 @@ export const genderSlide = createSlice({
 export const { all, female, male, genderless, undefineds } =
   genderSlide.actions;
 
-export const selectAll = (state) => state.genderFilter.all;
+export const selectFemale = (state) => state.genderFilter.female;
+export const selectMale = (state) => state.genderFilter.male;
+export const selectGeness = (state) => state.genderFilter.genderless;
 
 export default genderSlide.reducer;

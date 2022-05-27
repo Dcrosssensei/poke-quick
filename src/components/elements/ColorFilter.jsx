@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import { selectColor } from "../../redux/filtersSlide";
+import { COLORS } from "../../redux/activeSlide";
 
 import servicesCase from "../../services/servicesCase";
 import serviceColor from "../../services/serviceColor";
@@ -12,149 +13,61 @@ const ColorFilter = () => {
   const dispatch = useDispatch();
   const color = useSelector(selectColor);
 
-  const [typeActive, setTypeActive] = useState({ name: "", active: "" });
   const handleOnChange = (e) => {
-    setTypeActive({ name: e.id, active: e.checked });
+    dispatch(COLORS(e.id));
   };
+
   useEffect(() => {
-    let activeBoolean = typeActive.active;
-    let activeIndex = typeActive.name;
     let url = "";
 
-    if (activeBoolean === true || activeBoolean === false) {
-      switch (activeIndex) {
-        case "black":
-          url = color[0].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            colorList,
-            serviceColor
-          );
-          break;
-        case "blue":
-          url = color[1].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            colorList,
-            serviceColor
-          );
-          break;
-        case "brown":
-          url = color[2].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            colorList,
-            serviceColor
-          );
-          break;
-        case "gray":
-          url = color[3].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            colorList,
-            serviceColor
-          );
-          break;
-        case "green":
-          url = color[4].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            colorList,
-            serviceColor
-          );
-          break;
-        case "pink":
-          url = color[5].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            colorList,
-            serviceColor
-          );
-          break;
-        case "purple":
-          url = color[6].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            colorList,
-            serviceColor
-          );
-          break;
-        case "red":
-          url = color[7].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            colorList,
-            serviceColor
-          );
-          break;
-        case "white":
-          url = color[8].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            colorList,
-            serviceColor
-          );
-          break;
-        case "yellow":
-          url = color[9].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            colorList,
-            serviceColor
-          );
-          break;
+    url = "https://pokeapi.co/api/v2/pokemon-color/1";
+    servicesCase(url, dispatch, "black", colorList, serviceColor);
 
-        default:
-          break;
-      }
-    }
-  }, [typeActive, dispatch, color]);
+    url = "https://pokeapi.co/api/v2/pokemon-color/2";
+    servicesCase(url, dispatch, "blue", colorList, serviceColor);
+
+    url = "https://pokeapi.co/api/v2/pokemon-color/3";
+    servicesCase(url, dispatch, "brown", colorList, serviceColor);
+
+    url = "https://pokeapi.co/api/v2/pokemon-color/4";
+    servicesCase(url, dispatch, "gray", colorList, serviceColor);
+
+    url = "https://pokeapi.co/api/v2/pokemon-color/5";
+    servicesCase(url, dispatch, "green", colorList, serviceColor);
+
+    url = "https://pokeapi.co/api/v2/pokemon-color/6";
+    servicesCase(url, dispatch, "pink", colorList, serviceColor);
+
+    url = "https://pokeapi.co/api/v2/pokemon-color/7";
+    servicesCase(url, dispatch, "purple", colorList, serviceColor);
+
+    url = "https://pokeapi.co/api/v2/pokemon-color/8";
+    servicesCase(url, dispatch, "red", colorList, serviceColor);
+
+    url = "https://pokeapi.co/api/v2/pokemon-color/9";
+    servicesCase(url, dispatch, "white", colorList, serviceColor);
+
+    url = "https://pokeapi.co/api/v2/pokemon-color/10";
+    servicesCase(url, dispatch, "yellow", colorList, serviceColor);
+  }, [dispatch, color]);
 
   return (
     <div className="Filter__Color">
       <h5>Color:</h5>
-      {color.map((item, index) => (
-        <label
-          key={index}
-          htmlFor={item.name}
-          onChange={(e) => {
-            handleOnChange(e.target);
-          }}
-          Style={`--color:${item.name}`}
-        >
-          <input type="checkbox" name={item.name} id={item.name} />
-        </label>
-      ))}
+      <div className="Filter__Color__List">
+        {color.map((item, index) => (
+          <label
+            key={index}
+            htmlFor={item.name}
+            onChange={(e) => {
+              handleOnChange(e.target);
+            }}
+          >
+            <input type="checkbox" name={item.name} id={item.name} />
+            <span Style={`--color:${item.name}`} />
+          </label>
+        ))}
+      </div>
     </div>
   );
 };

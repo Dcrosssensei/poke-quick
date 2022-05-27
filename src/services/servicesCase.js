@@ -80,7 +80,7 @@ const targets = [
   { undefineds: undefineds },
 ];
 
-const servicesCase = (boolean, url, dispatch, action, servicio, select) => {
+const servicesCase = (url, dispatch, action, servicio, select) => {
   let dato = "";
   const target = () => {
     targets.forEach((e) => {
@@ -90,11 +90,7 @@ const servicesCase = (boolean, url, dispatch, action, servicio, select) => {
     });
   };
   target();
-  if (boolean === true) {
-    select(url, dispatch, dato, servicio);
-  } else {
-    dispatch(dato([]));
-  }
+  select(url, dispatch, dato, servicio);
 };
 
 export default servicesCase;

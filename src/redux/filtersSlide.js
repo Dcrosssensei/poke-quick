@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const filtersSlide = createSlice({
-  name: "filters",
+  name: "actives",
   initialState: {
     types: [],
     colors: [],

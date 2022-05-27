@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "./elements/Card";
 
 import { useSelector } from "react-redux";
+import { selectTypes, selectColors, selectgenders } from "../redux/activeSlide";
 
 import {
   selectNormal,
@@ -26,9 +27,30 @@ import {
   selectshadow,
 } from "../redux/typeSlide";
 
-const ListContent = (search, load) => {
-  //observables
-  const normals = useSelector(selectNormal);
+import {
+  selectBlack,
+  selectblue,
+  selectbrown,
+  selectgray,
+  selectgreen,
+  selectpink,
+  selectpurple,
+  selectred,
+  selectwhite,
+  selectyellow,
+} from "../redux/colorSlide";
+
+import { selectFemale, selectMale, selectGeness } from "../redux/genderSlide";
+
+const ListContent = (search) => {
+  const [noFilter, setnoFilter] = useState(true);
+  const [filtrado, setfiltrado] = useState();
+
+  const Ftype = useSelector(selectTypes);
+  const Fcolor = useSelector(selectColors);
+  const Fgender = useSelector(selectgenders);
+
+  const Normal = useSelector(selectNormal);
   const fighting = useSelector(selectfighting);
   const flying = useSelector(selectflying);
   const poison = useSelector(selectpoison);
@@ -49,26 +71,80 @@ const ListContent = (search, load) => {
   const unknown = useSelector(selectunknown);
   const shadow = useSelector(selectshadow);
 
-  const normalLoaded = normals;
+  const Black = useSelector(selectBlack);
+  const blue = useSelector(selectblue);
+  const brown = useSelector(selectbrown);
+  const gray = useSelector(selectgray);
+  const green = useSelector(selectgreen);
+  const pink = useSelector(selectpink);
+  const purple = useSelector(selectpurple);
+  const red = useSelector(selectred);
+  const white = useSelector(selectwhite);
+  const yellow = useSelector(selectyellow);
+
+  const Female = useSelector(selectFemale);
+  const Male = useSelector(selectMale);
+  const Geness = useSelector(selectGeness);
+
+  const FtsType = {
+    normal: Normal,
+    fighting: fighting,
+    flying: flying,
+    poison: poison,
+    ground: ground,
+    rock: rock,
+    bug: bug,
+    ghost: ghost,
+    steel: steel,
+    fire: fire,
+    water: water,
+    grass: grass,
+    electric: electric,
+    psychic: psychic,
+    ice: ice,
+    dragon: dragon,
+    dark: dark,
+    fairy: fairy,
+    unknown: unknown,
+    shadow: shadow,
+  };
 
   useEffect(() => {
-    console.log(normalLoaded);
-  }, [normalLoaded]);
+    if (Ftype.length > 0) {
+      // setnoFilter(false);
+      setfiltrado(
+        search.list.filter((e) => {
+          return FtsType[Ftype].includes(e.id);
+        })
+      );
+      console.log(filtrado);
+    }
+  }, [Ftype]);
 
-  return (
-    <>
-      <section className="Content__Card">
-        {search.list.map((item, index) => (
-          <Card key={index} id={item.id} name={item.name} />
-        ))}
-      </section>
-      {/* <section className="Content__Card">
-        {normalLoaded.map((item, index) => (
-          <Card key={index} id={item.id} name={item.name} />
-        ))}
-      </section> */}
-    </>
-  );
+  if (noFilter) {
+    return (
+      <>
+        <section className="Content__Card">
+          {search.list.map((item, index) => (
+            <Card key={index} id={item.id} name={item.name} />
+          ))}
+        </section>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <section className="Content__Card">
+          <h1> toy filtrado</h1>
+          {search.list.map((item, index) => (
+            <Card key={index} id={item.id} name={item.name} />
+          ))}
+        </section>
+      </>
+    );
+  }
+
+  // );
 };
 
 export default ListContent;

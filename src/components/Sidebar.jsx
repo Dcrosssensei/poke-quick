@@ -7,7 +7,7 @@ import ColorFilter from "./elements/ColorFilter";
 const Sidebar = () => {
   return (
     <div className="Sidebar">
-      <h4>filter</h4>
+      <h4>Filters</h4>
       <hr />
       <div className="Sidebar__Filter">
         <TypeFilter />

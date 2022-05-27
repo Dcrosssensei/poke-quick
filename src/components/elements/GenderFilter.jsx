@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
-import { selectgender } from "../../redux/filtersSlide";
 import { useSelector, useDispatch } from "react-redux";
+import { selectgender } from "../../redux/filtersSlide";
+import { GENDERS } from "../../redux/activeSlide";
 
 import servicesCase from "../../services/servicesCase";
 import { genderList } from "../../services/serviceActiveFilter";
@@ -11,73 +12,38 @@ const GenderFilter = () => {
   const gender = useSelector(selectgender);
   const dispatch = useDispatch();
 
-  const [typeActive, setTypeActive] = useState({ name: "", active: "" });
   const handleOnChange = (e) => {
-    setTypeActive({ name: e.id, active: e.checked });
+    dispatch(GENDERS(e.id));
   };
   useEffect(() => {
-    let activeBoolean = typeActive.active;
-    let activeIndex = typeActive.name;
     let url = "";
+    url = "https://pokeapi.co/api/v2/gender/1/";
+    servicesCase(url, dispatch, "female", genderList, serviceGender);
 
-    if (activeBoolean === true || activeBoolean === false) {
-      switch (activeIndex) {
-        case "female":
-          url = gender[0].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            genderList,
-            serviceGender
-          );
-          break;
-        case "male":
-          url = gender[1].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            genderList,
-            serviceGender
-          );
-          break;
-        case "genderless":
-          url = gender[2].url;
-          servicesCase(
-            activeBoolean,
-            url,
-            dispatch,
-            activeIndex,
-            genderList,
-            serviceGender
-          );
-          break;
+    url = "https://pokeapi.co/api/v2/gender/2/";
+    servicesCase(url, dispatch, "male", genderList, serviceGender);
 
-        default:
-          break;
-      }
-    }
-  }, [typeActive, dispatch, gender]);
+    url = "https://pokeapi.co/api/v2/gender/3/";
+    servicesCase(url, dispatch, "genderless", genderList, serviceGender);
+  });
 
   return (
     <div className="Filter__Gender">
       <h5>Gender:</h5>
-
-      {gender.map((item, index) => (
-        <label
-          key={index}
-          htmlFor={item.name}
-          onChange={(e) => {
-            handleOnChange(e.target);
-          }}
-        >
-          <input type="checkbox" name={item.name} id={item.name} />
-          {item.name}
-        </label>
-      ))}
+      <div className="Filter__Gender__List">
+        {gender.map((item, index) => (
+          <label
+            key={index}
+            htmlFor={item.name}
+            onChange={(e) => {
+              handleOnChange(e.target);
+            }}
+          >
+            <input type="checkbox" name={item.name} id={item.name} />
+            {item.name}
+          </label>
+        ))}
+      </div>
     </div>
   );
 };

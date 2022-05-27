@@ -1,5 +1,16 @@
 .Card__Item {
+  background-color: #fafafa;
+  padding: 1rem;
+  margin: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: #d4d4d4 2px 3px 1px;
+  border-radius: 0.8rem;
+
   &:hover {
     cursor: pointer;
+    transition: 0.3s;
+    background-color: #eecccc;
   }
 }
