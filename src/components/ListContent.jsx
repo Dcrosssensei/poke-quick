@@ -1,8 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Card from "./elements/Card";
 
-import { useSelector } from "react-redux";
-import { selectTypes, selectColors, selectgenders } from "../redux/activeSlide";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectTypes,
+  selectColors,
+  selectgenders,
+  selectTypesA,
+  selectColorsA,
+  selectgendersA,
+  TYPES,
+  COLORS,
+  GENDERS,
+} from "../redux/activeSlide";
 
 import {
   selectNormal,
@@ -42,13 +52,20 @@ import {
 
 import { selectFemale, selectMale, selectGeness } from "../redux/genderSlide";
 
-const ListContent = (search) => {
+import { selectPokemon } from "../redux/dataStore";
+
+const ListContent = (search, load) => {
   const [noFilter, setnoFilter] = useState(true);
   const [filtrado, setfiltrado] = useState([]);
+  const dispatch = useDispatch();
 
   const Ftype = useSelector(selectTypes);
+  const FtypeA = useSelector(selectTypesA);
   const Fcolor = useSelector(selectColors);
+  const FcolorA = useSelector(selectColorsA);
   const Fgender = useSelector(selectgenders);
+  const FgenderA = useSelector(selectgendersA);
+  const pokeImg = useSelector(selectPokemon);
 
   const Normal = useSelector(selectNormal);
   const fighting = useSelector(selectfighting);
@@ -107,20 +124,61 @@ const ListContent = (search) => {
     fairy: fairy,
     unknown: unknown,
     shadow: shadow,
+    black: Black,
+    blue: blue,
+    brown: brown,
+    gray: gray,
+    green: green,
+    pink: pink,
+    purple: purple,
+    red: red,
+    white: white,
+    yellow: yellow,
+    female: Female,
+    male: Male,
+    genderless: Geness,
   };
 
   useEffect(() => {
-    if (Ftype.length > 0) {
+    if (FtypeA) {
       setnoFilter(false);
-      console.log(filtrado);
-      const data = search.list.filter((e) => {
-        return FtsType[Ftype].includes(e);
+      let array = FtsType[Ftype];
+      let dato = [];
+      for (let i = 0; i < array.length; i++) {
+        dato.push(array[i].name);
+      }
+      let x = pokeImg.filter((item) => {
+        return dato.includes(item.name);
       });
-      setfiltrado(data);
-    } else {
-      setnoFilter(true);
+      setfiltrado(x);
     }
-  }, [Ftype]);
+
+    if (FcolorA) {
+      setnoFilter(false);
+      let array = FtsType[Fcolor];
+      let dato = [];
+      for (let i = 0; i < array.length; i++) {
+        dato.push(array[i].name);
+      }
+      let x = pokeImg.filter((item) => {
+        return dato.includes(item.name);
+      });
+      setfiltrado(x);
+    }
+
+    if (FgenderA) {
+      setnoFilter(false);
+      let array = FtsType[Fgender];
+      let dato = [];
+      for (let i = 0; i < array.length; i++) {
+        dato.push(array[i].name);
+      }
+      let x = pokeImg.filter((item) => {
+        return dato.includes(item.name);
+      });
+      setfiltrado(x);
+    }
+  }, [Ftype, Fcolor, Fgender, FtypeA, FcolorA, FgenderA]);
 
   if (noFilter) {
     return (

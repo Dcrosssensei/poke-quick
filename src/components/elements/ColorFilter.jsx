@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import { selectColor } from "../../redux/filtersSlide";
-import { COLORS } from "../../redux/activeSlide";
+import { COLORS, ACOLORS } from "../../redux/activeSlide";
 
 import servicesCase from "../../services/servicesCase";
 import serviceColor from "../../services/serviceColor";
@@ -15,6 +15,7 @@ const ColorFilter = () => {
 
   const handleOnChange = (e) => {
     dispatch(COLORS(e.id));
+    dispatch(ACOLORS(e.checked));
   };
 
   useEffect(() => {

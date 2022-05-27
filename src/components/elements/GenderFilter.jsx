@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 import { selectgender } from "../../redux/filtersSlide";
-import { GENDERS } from "../../redux/activeSlide";
+import { GENDERS, AGENDERS } from "../../redux/activeSlide";
 
 import servicesCase from "../../services/servicesCase";
 import { genderList } from "../../services/serviceActiveFilter";
@@ -14,6 +14,7 @@ const GenderFilter = () => {
 
   const handleOnChange = (e) => {
     dispatch(GENDERS(e.id));
+    dispatch(AGENDERS(e.checked));
   };
   useEffect(() => {
     let url = "";
