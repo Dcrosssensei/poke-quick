@@ -44,7 +44,7 @@ import { selectFemale, selectMale, selectGeness } from "../redux/genderSlide";
 
 const ListContent = (search) => {
   const [noFilter, setnoFilter] = useState(true);
-  const [filtrado, setfiltrado] = useState();
+  const [filtrado, setfiltrado] = useState([]);
 
   const Ftype = useSelector(selectTypes);
   const Fcolor = useSelector(selectColors);
@@ -111,13 +111,14 @@ const ListContent = (search) => {
 
   useEffect(() => {
     if (Ftype.length > 0) {
-      // setnoFilter(false);
-      setfiltrado(
-        search.list.filter((e) => {
-          return FtsType[Ftype].includes(e.id);
-        })
-      );
+      setnoFilter(false);
       console.log(filtrado);
+      const data = search.list.filter((e) => {
+        return FtsType[Ftype].includes(e);
+      });
+      setfiltrado(data);
+    } else {
+      setnoFilter(true);
     }
   }, [Ftype]);
 
@@ -135,8 +136,7 @@ const ListContent = (search) => {
     return (
       <>
         <section className="Content__Card">
-          <h1> toy filtrado</h1>
-          {search.list.map((item, index) => (
+          {filtrado.map((item, index) => (
             <Card key={index} id={item.id} name={item.name} />
           ))}
         </section>
