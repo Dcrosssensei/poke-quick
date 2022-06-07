@@ -1,5 +1,4 @@
-export const apiPokedex = () => {
-  return fetch("https://pokeapi.co/api/v2/pokedex/national").then((res) =>
-    res.json()
-  );
+export const apiPokedex = async () => {
+  const res = await fetch("https://pokeapi.co/api/v2/pokedex/national");
+  return await res.json();
 };

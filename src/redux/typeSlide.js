@@ -132,5 +132,6 @@ export const selectdark = (state) => state.typeFilter.dark;
 export const selectfairy = (state) => state.typeFilter.fairy;
 export const selectunknown = (state) => state.typeFilter.unknown;
 export const selectshadow = (state) => state.typeFilter.shadow;
+export const selectall = (state) => state.typeFilter;
 
 export default typeSlide.reducer;

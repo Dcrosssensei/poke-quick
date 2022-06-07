@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectType } from "../../redux/filtersSlide";
@@ -13,74 +13,12 @@ const TypeFilter = () => {
   const type = useSelector(selectType);
 
   const handleOnChange = (e) => {
-    dispatch(TYPES(e.id));
+    dispatch(TYPES(e.name));
     dispatch(ATYPES(e.checked));
+    if (e.checked) {
+      servicesCase(e.id, dispatch, e.name, typeList, serviceList);
+    }
   };
-
-  useEffect(() => {
-    setTimeout(() => {
-      let url = "";
-      url = "https://pokeapi.co/api/v2/type/1/";
-      servicesCase(url, dispatch, "normal", typeList, serviceList);
-
-      url = "https://pokeapi.co/api/v2/type/2/";
-      servicesCase(url, dispatch, "fighting", typeList, serviceList);
-
-      url = "https://pokeapi.co/api/v2/type/3/";
-      servicesCase(url, dispatch, "flying", typeList, serviceList);
-
-      url = "https://pokeapi.co/api/v2/type/4/";
-      servicesCase(url, dispatch, "poison", typeList, serviceList);
-
-      url = "https://pokeapi.co/api/v2/type/5/";
-      servicesCase(url, dispatch, "ground", typeList, serviceList);
-
-      url = "https://pokeapi.co/api/v2/type/6/";
-      servicesCase(url, dispatch, "rock", typeList, serviceList);
-
-      url = "https://pokeapi.co/api/v2/type/7/";
-      servicesCase(url, dispatch, "bug", typeList, serviceList);
-
-      url = "https://pokeapi.co/api/v2/type/8/";
-      servicesCase(url, dispatch, "ghost", typeList, serviceList);
-
-      url = "https://pokeapi.co/api/v2/type/9/";
-      servicesCase(url, dispatch, "steel", typeList, serviceList);
-
-      url = "https://pokeapi.co/api/v2/type/10/";
-      servicesCase(url, dispatch, "fire", typeList, serviceList);
-
-      url = "https://pokeapi.co/api/v2/type/11/";
-      servicesCase(url, dispatch, "water", typeList, serviceList);
-
-      url = "https://pokeapi.co/api/v2/type/12/";
-      servicesCase(url, dispatch, "grass", typeList, serviceList);
-
-      url = "https://pokeapi.co/api/v2/type/13/";
-      servicesCase(url, dispatch, "electric", typeList, serviceList);
-
-      url = "https://pokeapi.co/api/v2/type/14/";
-      servicesCase(url, dispatch, "psychic", typeList, serviceList);
-
-      url = "https://pokeapi.co/api/v2/type/15/";
-      servicesCase(url, dispatch, "ice", typeList, serviceList);
-
-      url = "https://pokeapi.co/api/v2/type/16/";
-      servicesCase(url, dispatch, "dragon", typeList, serviceList);
-
-      url = "https://pokeapi.co/api/v2/type/17/";
-      servicesCase(url, dispatch, "dark", typeList, serviceList);
-
-      url = "https://pokeapi.co/api/v2/type/18/";
-      servicesCase(url, dispatch, "fairy", typeList, serviceList);
-
-      url = "https://pokeapi.co/api/v2/type/10001/";
-      servicesCase(url, dispatch, "unknown", typeList, serviceList);
-
-      url = "https://pokeapi.co/api/v2/type/10002/";
-      servicesCase(url, dispatch, "shadow", typeList, serviceList);
-    }, 1500);
-  }, [dispatch, type]);
 
   return (
     <div className="Filter__Type">
@@ -94,7 +32,7 @@ const TypeFilter = () => {
               handleOnChange(e.target);
             }}
           >
-            <input type="checkbox" name={item.name} id={item.name} />
+            <input type="checkbox" name={item.name} id={item.url} />
             {item.name}
           </label>
         ))}

@@ -1,20 +1,20 @@
-const detPokemon = (id) => {
-  return fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then((res) =>
+const detPokemon = async (id) => {
+  return await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then((res) =>
     res.json()
   );
 };
-const detSpeciePokemon = (id) => {
-  return fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`).then((res) =>
-    res.json()
+const detSpeciePokemon = async (id) => {
+  return await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}`).then(
+    (res) => res.json()
   );
 };
-const detDescription = (id) => {
-  return fetch(`https://pokeapi.co/api/v2/characteristic/${id}`).then((res) =>
-    res.json()
+const detDescription = async (id) => {
+  return await fetch(`https://pokeapi.co/api/v2/characteristic/${id}`).then(
+    (res) => res.json()
   );
 };
-const detEvolution = (id) => {
-  return fetch("https://beta.pokeapi.co/graphql/v1beta", {
+const detEvolution = async (id) => {
+  return await fetch("https://beta.pokeapi.co/graphql/v1beta", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
