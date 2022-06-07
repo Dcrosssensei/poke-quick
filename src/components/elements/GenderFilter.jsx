@@ -2,7 +2,6 @@ import React from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 import { selectgender } from "../../redux/filtersSlide";
-import { GENDERS, AGENDERS } from "../../redux/activeSlide";
 
 import servicesCase from "../../services/servicesCase";
 import { genderList } from "../../services/serviceActiveFilter";
@@ -13,8 +12,6 @@ const GenderFilter = () => {
   const dispatch = useDispatch();
 
   const handleOnChange = (e) => {
-    dispatch(GENDERS(e.name));
-    dispatch(AGENDERS(e.checked));
     if (e.checked) {
       servicesCase(e.id, dispatch, e.name, genderList, serviceGender);
     }

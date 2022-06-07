@@ -1,7 +1,6 @@
 import React from "react";
 
 import { selectColor } from "../../redux/filtersSlide";
-import { COLORS, ACOLORS } from "../../redux/activeSlide";
 
 import servicesCase from "../../services/servicesCase";
 import serviceColor from "../../services/serviceColor";
@@ -14,8 +13,6 @@ const ColorFilter = () => {
   const color = useSelector(selectColor);
 
   const handleOnChange = (e) => {
-    dispatch(COLORS(e.name));
-    dispatch(ACOLORS(e.checked));
     if (e.checked) {
       servicesCase(e.id, dispatch, e.name, colorList, serviceColor);
     }
@@ -26,16 +23,16 @@ const ColorFilter = () => {
       <h5>Color:</h5>
       <div className="Filter__Color__List">
         {color.map((item, index) => (
-          <label
-            key={index}
-            htmlFor={item.name}
-            onChange={(e) => {
-              handleOnChange(e.target);
-            }}
-          >
-            <input type="checkbox" name={item.name} id={item.url} />
-            <span Style={`--color:${item.name}`} />
-          </label>
+          <div key={index} Style={`--color:${item.name}`}>
+            <input
+              type="checkbox"
+              name={item.name}
+              id={item.url}
+              onClick={(e) => {
+                handleOnChange(e.target);
+              }}
+            />
+          </div>
         ))}
       </div>
     </div>

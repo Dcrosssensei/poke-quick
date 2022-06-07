@@ -6,7 +6,6 @@ import searchSlide from "./searchSlide";
 import typeSlide from "./typeSlide";
 import colorSlide from "./colorSlide";
 import genderSlide from "./genderSlide";
-import activeSlide from "./activeSlide";
 
 export default configureStore({
   reducer: {
@@ -16,6 +15,5 @@ export default configureStore({
     typeFilter: typeSlide,
     colorFilter: colorSlide,
     genderFilter: genderSlide,
-    actives: activeSlide,
   },
 });

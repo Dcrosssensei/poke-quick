@@ -23,7 +23,7 @@ export const genderSlide = createSlice({
       state.genderless = action.payload;
     },
     undefineds: (state, action) => {
-      state.undefined = action.payload;
+      state.undefineds = action.payload;
     },
   },
 });
@@ -35,5 +35,6 @@ export const { all, female, male, genderless, undefineds } =
 export const selectFemale = (state) => state.genderFilter.female;
 export const selectMale = (state) => state.genderFilter.male;
 export const selectGeness = (state) => state.genderFilter.genderless;
+export const selectAllGender = (state) => state.genderFilter;
 
 export default genderSlide.reducer;

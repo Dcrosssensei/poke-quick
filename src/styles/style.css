@@ -322,24 +322,29 @@ body {
   padding: 10px;
   justify-items: center;
 }
-.Filter__Color__List label {
+.Filter__Color__List div {
   display: flex;
   position: relative;
   border: 2px solid #e6e6e6;
   box-shadow: 1px 1px 1px #e6e6e6;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  background-color: var(--color);
 }
-.Filter__Color__List label input {
+.Filter__Color__List div input {
   position: absolute;
   opacity: 0;
-  height: 0;
-  width: 0;
+  width: 25px;
+  height: 25px;
 }
-.Filter__Color__List label span {
-  background-color: var(--color);
-  height: 20px;
-  width: 20px;
+.Filter__Color__List div input:checked {
+  opacity: 1;
+  width: 15px;
+  height: 15px;
 }
-.Filter__Color__List label:hover {
+.Filter__Color__List div:hover {
   cursor: pointer;
   transform: rotate(360deg);
   transition: 0.8s;

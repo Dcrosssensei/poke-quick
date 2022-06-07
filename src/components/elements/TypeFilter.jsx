@@ -2,7 +2,6 @@ import React from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectType } from "../../redux/filtersSlide";
-import { TYPES, ATYPES } from "../../redux/activeSlide";
 
 import servicesCase from "../../services/servicesCase";
 import serviceList from "../../services/serviceList";
@@ -13,8 +12,6 @@ const TypeFilter = () => {
   const type = useSelector(selectType);
 
   const handleOnChange = (e) => {
-    dispatch(TYPES(e.name));
-    dispatch(ATYPES(e.checked));
     if (e.checked) {
       servicesCase(e.id, dispatch, e.name, typeList, serviceList);
     }
