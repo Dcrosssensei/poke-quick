@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Card from "./elements/Card";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { selectAllTypes } from "../redux/typeSlide";
 
@@ -9,31 +9,113 @@ import { selectAllColor } from "../redux/colorSlide";
 
 import { selectAllGender } from "../redux/genderSlide";
 
-// import { selectPokemon } from "../redux/dataStore";
+import { POKEMON_FILTERED, selectPokemonFiltered } from "../redux/dataStore";
 
 const ListContent = (search, load) => {
-  const [noFilter, setnoFilter] = useState(true);
-  const [filtrado, setfiltrado] = useState([]);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const allTypes = useSelector(selectAllTypes);
   const allColor = useSelector(selectAllColor);
   const allGender = useSelector(selectAllGender);
+  const pokemonFiltered = useSelector(selectPokemonFiltered);
 
-  const final = [];
+  const [pokemap, setPokemap] = useState([]);
+
   useEffect(() => {
-    if (allTypes.length > 0) {
-      allTypes.forEach((element) => {
-        console.log(element);
-        if (element.lenght > 0) {
-          final.push(element);
-        }
-      });
-    }
-    console.log(final);
-  }, [allTypes, allColor, allGender]);
+    setPokemap(pokemonFiltered.map((item) => [item.id, item]));
+  }, [pokemonFiltered]);
 
-  if (noFilter) {
+  useEffect(() => {
+    let long = pokemap.length;
+
+    Object.entries(allTypes).forEach(([key, value]) => {
+      let longValues = value.length;
+
+      if (value.length > 0) {
+        let filtertArray = [];
+        if (long < 800 && long !== longValues) {
+          for (let i = 0; i < long; i++) {
+            let id;
+            if (value[i] !== undefined) {
+              id = value[i].id;
+            }
+            let newAray = pokemap.reduce((acc, nxtvalue) => {
+              if (nxtvalue[0] === id) {
+                acc.push(nxtvalue[1]);
+              }
+              return acc;
+            }, []);
+            filtertArray.push(...newAray);
+          }
+          dispatch(POKEMON_FILTERED(filtertArray));
+        } else if (long !== longValues) {
+          dispatch(POKEMON_FILTERED(value));
+        }
+      }
+    });
+  }, [allTypes]);
+
+  useEffect(() => {
+    let long = pokemap.length;
+
+    Object.entries(allColor).forEach(([key, value]) => {
+      let longValues = value.length;
+
+      if (value.length > 0) {
+        let filtertArray = [];
+        if (long < 800 && long !== longValues) {
+          for (let i = 0; i < long; i++) {
+            let id;
+            if (value[i] !== undefined) {
+              id = value[i].id;
+            }
+            let newAray = pokemap.reduce((acc, nxtvalue) => {
+              if (nxtvalue[0] === id) {
+                acc.push(nxtvalue[1]);
+              }
+              return acc;
+            }, []);
+            filtertArray.push(...newAray);
+          }
+          dispatch(POKEMON_FILTERED(filtertArray));
+        } else if (long !== longValues) {
+          dispatch(POKEMON_FILTERED(value));
+        }
+      }
+    });
+  }, [allColor]);
+
+  useEffect(() => {
+    let long = pokemap.length;
+
+    Object.entries(allGender).forEach(([key, value]) => {
+      let longValues = value.length;
+
+      if (value.length > 0) {
+        let filtertArray = [];
+        if (long < 800 && long !== longValues) {
+          for (let i = 0; i < long; i++) {
+            let id;
+            if (value[i] !== undefined) {
+              id = value[i].id;
+            }
+            let newAray = pokemap.reduce((acc, nxtvalue) => {
+              if (nxtvalue[0] === id) {
+                acc.push(nxtvalue[1]);
+              }
+              return acc;
+            }, []);
+            filtertArray.push(...newAray);
+          }
+          dispatch(POKEMON_FILTERED(filtertArray));
+        } else if (long !== longValues) {
+          dispatch(POKEMON_FILTERED(value));
+        }
+      }
+    });
+  }, [allGender]);
+
+  if (pokemonFiltered.length !== 0) {
     return (
       <>
         <section className="Content__Card">
@@ -46,11 +128,7 @@ const ListContent = (search, load) => {
   } else {
     return (
       <>
-        <section className="Content__Card">
-          {filtrado.map((item, index) => (
-            <Card key={index} id={item.id} name={item.name} />
-          ))}
-        </section>
+        <h1>no encontardo</h1>
       </>
     );
   }
