@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 //redux
 import { useDispatch, useSelector } from "react-redux";
-import { selectPokemon, POKEMON } from "../redux/dataStore";
+import { selectPokemon, POKEMON, POKEMON_FILTERED } from "../redux/dataStore";
 import {
   selectColor,
   selectType,
@@ -38,6 +38,7 @@ export const Layout = ({ children }) => {
         });
 
         dispatch(POKEMON(payload));
+        dispatch(POKEMON_FILTERED(payload));
       });
     }
 

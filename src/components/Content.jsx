@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 //redux imports
-import { selectPokemon } from "../redux/dataStore";
+import { selectPokemon, selectPokemonFiltered } from "../redux/dataStore";
 import { selectSearch } from "../redux/searchSlide";
 
 import { useSelector } from "react-redux";
@@ -10,6 +10,7 @@ import ListContent from "./ListContent";
 const Content = () => {
   //redux
   const pokeImg = useSelector(selectPokemon);
+  const pokemonFiltered = useSelector(selectPokemonFiltered);
   const searchData = useSelector(selectSearch);
 
   //States
@@ -25,7 +26,7 @@ const Content = () => {
   };
 
   useEffect(() => {
-    let sortedCopy = [...pokeImg];
+    let sortedCopy = [...pokemonFiltered];
 
     setsorted(sortedCopy);
     const regExpL = new RegExp(/\w/g);
@@ -44,7 +45,7 @@ const Content = () => {
       });
       setsorted(sortedFix);
     }
-  }, [pokeImg, searchData]);
+  }, [pokemonFiltered, searchData]);
 
   return (
     <div className="Content">
