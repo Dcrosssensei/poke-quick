@@ -168,8 +168,18 @@ body {
 }
 
 .MobileMenu {
-  position: absolute;
   display: none;
+  position: absolute;
+  background-color: #f44336;
+  width: 10%;
+  color: #f1f1f1;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 1.3rem;
+  transition: 0.3s;
+  box-shadow: #b3b1b1 2px 3px 2px;
+  margin: 0.2rem 0.2rem;
 }
 
 .ModalMenu {
@@ -235,6 +245,14 @@ body {
   border-bottom: solid 1px #c00505;
   box-shadow: #f7b506 0px 2px 1px;
 }
+.Header__inputs {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  gap: 5px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
 .Header img {
   width: 20%;
   height: auto;
@@ -251,6 +269,21 @@ body {
 }
 .Header input:hover {
   width: 90%;
+  transition: 0.3s;
+}
+.Header button {
+  background-color: #f44336;
+  width: 200px;
+  color: #f1f1f1;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 1rem;
+  transition: 0.3s;
+  box-shadow: #b3b1b1 2px 3px 2px;
+}
+.Header button:hover {
+  background-color: #f83022;
   transition: 0.3s;
 }
 
@@ -436,6 +469,10 @@ body {
 
   [class=Content] {
     grid-column-start: 1;
+  }
+
+  [class=MobileMenu] {
+    display: block;
   }
 }
 

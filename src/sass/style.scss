@@ -61,4 +61,7 @@ body {
   [class="Content"] {
     grid-column-start: 1;
   }
+  [class="MobileMenu"] {
+    display: block;
+  }
 }

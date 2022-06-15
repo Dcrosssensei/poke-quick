@@ -170,8 +170,18 @@
 }
 
 .MobileMenu {
-  position: absolute;
   display: none;
+  position: absolute;
+  background-color: #f44336;
+  width: 10%;
+  color: #f1f1f1;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 1.3rem;
+  transition: 0.3s;
+  box-shadow: #b3b1b1 2px 3px 2px;
+  margin: 0.2rem 0.2rem;
 }
 
 .ModalMenu {

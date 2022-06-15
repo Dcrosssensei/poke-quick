@@ -128,7 +128,7 @@ const ListContent = (search, load) => {
   } else {
     return (
       <>
-        <h1>no encontardo</h1>
+        <h4> No Items Found...</h4>
       </>
     );
   }

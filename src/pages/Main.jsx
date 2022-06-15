@@ -12,8 +12,9 @@ export const Main = () => {
     setShowModalMenu(true);
   };
 
-  const handleClose = () => {
-    setShowModalMenu(false);
+  const handleClose = (e) => {
+    setShowModalMenu(!showModalMenu);
+    e.stopPropagation();
   };
 
   return (
@@ -23,10 +24,12 @@ export const Main = () => {
         <Sidebar />
         <Content />
       </div>
-      <div className="MobileMenu" onClick={handleClick}>
-        take me to the modal menu
-        {showModalMenu && <ModalMenuP onClose={handleClose}></ModalMenuP>}
-      </div>
+      <button className="MobileMenu" onClick={handleClick}>
+        »
+        {showModalMenu && (
+          <ModalMenuP onClose={(e) => handleClose(e)}></ModalMenuP>
+        )}
+      </button>
     </>
   );
 };
